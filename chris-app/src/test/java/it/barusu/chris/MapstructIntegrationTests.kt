@@ -10,7 +10,10 @@ import org.slf4j.LoggerFactory
 
 
 class MapstructIntegrationTests {
-    val log = LoggerFactory.getLogger(this.javaClass)
+    companion object {
+        @JvmStatic
+        private val log = LoggerFactory.getLogger(this::class.java)
+    }
 
     @DisplayName("test mapstruct")
     @Test

@@ -11,6 +11,10 @@ dependencies {
     compile 'it.ozimov:embedded-redis'
     compile 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
 
+    compile 'org.freemarker:freemarker'
+    compile 'org.apache.httpcomponents:httpclient'
+    compile 'com.thoughtworks.xstream:xstream'
+
     compile 'org.mapstruct:mapstruct-jdk8'
     kapt 'org.mapstruct:mapstruct-processor'
 

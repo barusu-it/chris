@@ -17,7 +17,10 @@ import redis.embedded.RedisServer
 @ExtendWith(SpringExtension::class)
 class RedisSpringIntegrationTests {
 
-    private val log = LoggerFactory.getLogger(this.javaClass)
+    companion object {
+        @JvmStatic
+        private val log = LoggerFactory.getLogger(this::class.java)
+    }
 
     private lateinit var redisServer: RedisServer
 
@@ -27,7 +30,10 @@ class RedisSpringIntegrationTests {
     @BeforeEach
     fun beforeAll() {
         log.info("redis server starting.")
-        redisServer = RedisServer()
+        // fix "Can't start redis server. Check logs for details." Exception. reduce maxheap
+        redisServer = RedisServer.builder()
+                .setting("maxheap 51200000")
+                .build()
         redisServer.start()
     }
 
@@ -37,7 +43,7 @@ class RedisSpringIntegrationTests {
         redisServer.stop()
     }
 
-    @DisplayName("test redis")
+    @DisplayName("test embed redis")
     @Test
     fun testRedis() {
         val key = "test-key"

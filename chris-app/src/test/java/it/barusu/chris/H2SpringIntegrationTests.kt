@@ -14,7 +14,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 @DataJpaTest
 @ExtendWith(SpringExtension::class)
 class H2SpringIntegrationTests {
-    val log = LoggerFactory.getLogger(this.javaClass)!!
+    companion object {
+        @JvmStatic
+        private val log = LoggerFactory.getLogger(this::class.java)
+    }
 
     @Autowired
     lateinit var blogRepository: BlogRepository
