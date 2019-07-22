@@ -1,6 +1,6 @@
 package it.barusu.chris.util.json
 
-interface JsonProviderHolder {
+class JsonProviderHolder {
 
     companion object {
         @JvmStatic

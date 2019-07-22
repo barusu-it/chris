@@ -1,5 +1,5 @@
 // must apply spring-boot plugin when run 'gradlew testReport', why? 
-apply plugin: 'org.springframework.boot'
+//apply plugin: 'org.springframework.boot'
 
 dependencies {
 }
