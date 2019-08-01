@@ -5,13 +5,11 @@ import javax.persistence.*
 @Entity
 @Table(name = "blog")
 data class Blog (
-    @Id
-    @GeneratedValue
-    var id: Long = 0,
+        @Id
+        @GeneratedValue
+        var id: Long = 0,
 
-    @Column
-    var title: String?
-){
-    constructor() : this(0, null)
-}
+        @Column
+        var title: String? = null
+)
 
