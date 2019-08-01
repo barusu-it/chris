@@ -10,3 +10,11 @@ gradlew buildEnvironment
 ```
 gradlew -q <module_name>:dependencyInsight --dependency <group_name>
 ```
+
+### How to skip test task of gradle
+
+use -x to skip task
+
+```
+gradlew clean build -x test
+```
