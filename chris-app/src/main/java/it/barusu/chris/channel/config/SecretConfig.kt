@@ -1,8 +1,12 @@
-package it.barusu.chris.channel.process
+package it.barusu.chris.channel.config
 
 import it.barusu.chris.common.ChannelType
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.Document
 
+@Document(collection = "cs_channel_secret_config")
 data class SecretConfig(
+        @Id
         var channelNo: String? = null,
         var channelType: ChannelType? = null,
         var baseUrl: String? = null,

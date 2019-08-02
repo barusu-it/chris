@@ -1,6 +1,6 @@
-package it.barusu.chris.channel.process.wechat
+package it.barusu.chris.channel
 
-import it.barusu.chris.channel.process.SecretConfig
+import it.barusu.chris.channel.config.SecretConfig
 import it.barusu.chris.common.ChannelType
 import it.barusu.chris.util.StringUtils
 import it.barusu.chris.util.StringUtils.Companion.DASH
@@ -18,7 +18,6 @@ import java.security.SecureRandom
 abstract class AbstractChannelTests {
 
     companion object {
-
 
         const val DEFAULT_CHANNEL_NO: String = "DEFAULT"
         private const val DEFAULT_ENVIRONMENT: String = "dev"
