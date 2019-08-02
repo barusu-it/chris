@@ -1,5 +1,12 @@
 # chris
 
+### Convention
+
+package name
+
+- autoconfig: spring boot auto configuration package
+
+
 ### How to view gradle build script dependencies
 ```
 gradlew buildEnvironment
