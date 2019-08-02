@@ -1,17 +1,17 @@
 package it.barusu.chris
 
-import it.barusu.chris.query.Blog
-import it.barusu.chris.query.BlogRepository
+import it.barusu.chris.sample.query.Blog
+import it.barusu.chris.sample.query.BlogRepository
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit.jupiter.SpringExtension
 
-@DataJpaTest
+@SpringBootTest
 @ExtendWith(SpringExtension::class)
 class H2SpringIntegrationTests {
     companion object {

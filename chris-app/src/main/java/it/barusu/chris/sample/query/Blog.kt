@@ -1,4 +1,4 @@
-package it.barusu.chris.query
+package it.barusu.chris.sample.query
 
 import javax.persistence.*
 

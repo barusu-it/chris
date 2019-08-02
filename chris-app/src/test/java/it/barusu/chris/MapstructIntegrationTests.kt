@@ -1,7 +1,7 @@
 package it.barusu.chris
 
-import it.barusu.chris.convertor.UserMapper
-import it.barusu.chris.query.Blog
+import it.barusu.chris.sample.convertor.UserMapper
+import it.barusu.chris.sample.query.Blog
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test

@@ -1,4 +1,4 @@
-package it.barusu.chris.query
+package it.barusu.chris.sample.query
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document

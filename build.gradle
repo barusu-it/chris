@@ -7,6 +7,7 @@ buildscript {
     ext.mapstructVersion = '1.3.0.Final'
     ext.springBootVersion = '2.1.6.RELEASE'
     ext.springCloudVersion = 'Greenwich.RELEASE'
+    ext.vertxVersion = '3.8.0'
     ext.xstreamVersion = '1.4.10'
 
     // this will overwrite spring boot gradle plugin pom properties definition
@@ -94,6 +95,7 @@ subprojects {
     dependencyManagement {
         imports {
             mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
+            mavenBom "io.vertx:vertx-dependencies:${vertxVersion}"
 //            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
         }
 

@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.data.redis.DataRedisTest
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import redis.embedded.RedisServer
 
-@DataRedisTest
+@SpringBootTest
 @ExtendWith(SpringExtension::class)
 class RedisSpringIntegrationTests {
 
