@@ -10,5 +10,5 @@ abstract class Request(val type: RequestType) {
     var content: String? = null
     lateinit var transactionType: TransactionType
     lateinit var phase: Phase
-    lateinit var config: Config
+    lateinit var config: SecretConfig
 }

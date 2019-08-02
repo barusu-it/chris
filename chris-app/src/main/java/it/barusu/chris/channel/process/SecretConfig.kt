@@ -1,8 +1,10 @@
 package it.barusu.chris.channel.process
 
-data class Config(
+import it.barusu.chris.common.ChannelType
+
+data class SecretConfig(
         var channelNo: String? = null,
-        var channelType: String? = null,
+        var channelType: ChannelType? = null,
         var baseUrl: String? = null,
         var callbackUrl: String? = null,
         var returnUrl: String? = null,

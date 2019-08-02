@@ -1,6 +1,6 @@
 package it.barusu.chris.channel.process.wechat
 
-import it.barusu.chris.channel.process.Config
+import it.barusu.chris.channel.process.SecretConfig
 import it.barusu.chris.common.ChannelType
 import it.barusu.chris.util.StringUtils
 import it.barusu.chris.util.StringUtils.Companion.DASH
@@ -32,11 +32,11 @@ abstract class AbstractChannelTests {
         private val ENVIRONMENT = System.getProperty("env", DEFAULT_ENVIRONMENT)
     }
 
-    protected fun getConfig(type: ChannelType, channelNo: String): Config {
+    protected fun getConfig(type: ChannelType, channelNo: String): SecretConfig {
         val fileName = BASE_DIRECTION + SEPARATOR + ENVIRONMENT + SEPARATOR + type.name + DASH + channelNo + SUFFIX
         val content = IOUtils.toString(Thread.currentThread().contextClassLoader.getResourceAsStream(fileName),
                 Charset.forName(StringUtils.UTF_8))
-        return JsonProviderHolder.JACKSON.parse(content, Config::class.java)
+        return JsonProviderHolder.JACKSON.parse(content, SecretConfig::class.java)
     }
 
     protected fun httpClient(): HttpClient {

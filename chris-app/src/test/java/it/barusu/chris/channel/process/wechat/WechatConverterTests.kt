@@ -1,6 +1,6 @@
 package it.barusu.chris.channel.process.wechat
 
-import it.barusu.chris.channel.process.Config
+import it.barusu.chris.channel.process.SecretConfig
 import it.barusu.chris.channel.process.bean.Transaction
 import it.barusu.chris.channel.process.bean.TransactionQueryRequest
 import it.barusu.chris.channel.process.bean.TransactionRequest
@@ -21,7 +21,7 @@ class WechatConverterTests : AbstractChannelTests() {
     }
 
     private val converter: WechatConverter = WechatConverter()
-    private var config: Config = getConfig(ChannelType.WECHAT, DEFAULT_CHANNEL_NO)
+    private var config: SecretConfig = getConfig(ChannelType.WECHAT, DEFAULT_CHANNEL_NO)
 
     @DisplayName("test from transaction")
     @Test
