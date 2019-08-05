@@ -1,4 +1,4 @@
-package it.barusu.chris.sample.query
+package it.barusu.chris.sample.convertor
 
 import javax.persistence.*
 

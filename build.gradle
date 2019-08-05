@@ -74,8 +74,15 @@ subprojects {
 
     configurations {
         all*.exclude module: 'spring-boot-starter-tomcat'
+        all*.exclude module: 'junit'
     }
 
+//    allOpen {
+//        annotation("javax.persistence.Entity")
+//        annotation("javax.persistence.MappedSupperclass")
+//        annotation("javax.persistence.Embeddable")
+//    }
+//
     dependencies {
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
