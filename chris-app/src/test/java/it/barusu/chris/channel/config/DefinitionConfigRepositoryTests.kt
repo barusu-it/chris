@@ -21,7 +21,7 @@ class DefinitionConfigRepositoryTests : AbstractChannelTests() {
     }
 
     @Autowired
-    lateinit var definitionConfigRepository: DefinitionConfigRepository
+    private lateinit var definitionConfigRepository: DefinitionConfigRepository
 
     @DisplayName("test save definition config")
     @Test
