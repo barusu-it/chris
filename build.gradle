@@ -1,5 +1,6 @@
 buildscript {
 
+    ext.bouncycastleVersion = '1.62'
     ext.embedMongoVersion = '2.2.0'
     ext.embedRedisVersion = '0.7.2'
     ext.h2Version = '1.4.199'
@@ -113,6 +114,12 @@ subprojects {
             dependency "org.mapstruct:mapstruct-jdk8:${mapstructVersion}"
             dependency "org.mapstruct:mapstruct-processor:${mapstructVersion}"
             dependency "com.thoughtworks.xstream:xstream:${xstreamVersion}"
+
+            dependency "org.bouncycastle:bcpkix-jdk15on:${bouncycastleVersion}"
+            dependency "org.bouncycastle:bcmail-jdk15on:${bouncycastleVersion}"
+            dependency "org.bouncycastle:bcpg-jdk15on:${bouncycastleVersion}"
+            dependency "org.bouncycastle:bctls-jdk15on:${bouncycastleVersion}"
+            dependency "org.bouncycastle:bcprov-ext-jdk15on:${bouncycastleVersion}"
         }
 
     }

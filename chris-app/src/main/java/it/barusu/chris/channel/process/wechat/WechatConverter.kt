@@ -19,7 +19,7 @@ class WechatConverter : AbstractConverter() {
 
     companion object {
         private const val TEMPLATE_ATTRIBUTE_REQUEST: String = "request"
-        private const val CODE_SUCCESS: String = "SUCCESS"
+        const val CODE_SUCCESS: String = "SUCCESS"
         private const val CODE_ORDER_NOT_EXIST = "ORDERNOTEXIST"
         private val CODES_FAILED: Set<String> = setOf("CLOSED", "REVOKED")
 
