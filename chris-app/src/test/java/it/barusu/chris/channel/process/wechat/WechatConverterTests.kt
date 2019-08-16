@@ -18,6 +18,7 @@ import java.time.LocalDateTime
 
 class WechatConverterTests : AbstractChannelTests() {
     companion object {
+        @JvmStatic
         private val log = LoggerFactory.getLogger(this::class.java)
     }
 

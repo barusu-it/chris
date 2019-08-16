@@ -7,8 +7,14 @@ import it.barusu.chris.common.ChannelType
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.slf4j.LoggerFactory
 
 class WechatCryptorTests : AbstractChannelTests() {
+
+    companion object {
+        @JvmStatic
+        private val log = LoggerFactory.getLogger(this::class.java)
+    }
 
     @Suppress("SpellCheckingInspection")
     private val cryptor: WechatCryptor = WechatCryptor()
