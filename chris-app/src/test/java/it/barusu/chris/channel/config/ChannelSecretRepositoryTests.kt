@@ -24,11 +24,11 @@ class ChannelSecretRepositoryTests : AbstractChannelTests() {
 
     @DisplayName("test save secret")
     @Test
-    fun testSaveSecretConfig() {
+    fun testSaveSecret() {
         val secret: ChannelSecret = getSecret(ChannelType.WECHAT, DEFAULT_CHANNEL_NO)
 
         channelSecretRepository.save(secret)
-        log.info("save secret config: $secret")
+        log.info("save secret: $secret")
 
         val query = channelSecretRepository.findById(secret.channelNo ?: DEFAULT_CHANNEL_NO)
         assertThat(query.get()).isEqualTo(secret)

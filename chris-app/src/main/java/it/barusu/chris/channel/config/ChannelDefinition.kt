@@ -2,6 +2,7 @@ package it.barusu.chris.channel.config
 
 import it.barusu.chris.common.ChannelType
 import it.barusu.chris.common.DefinitionStatus
+import it.barusu.chris.merchant.MerchantDefinition
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
@@ -43,4 +44,7 @@ data class ChannelDefinition(
         @Enumerated(EnumType.STRING)
         @Column(name = "status", length = 64, nullable = false)
         var status: DefinitionStatus = DefinitionStatus.ACTIVED
-)
+) {
+    @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER, mappedBy = "channels")
+    var merchants: MutableSet<MerchantDefinition> = HashSet()
+}
