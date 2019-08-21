@@ -13,24 +13,33 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 
 @SpringBootTest
 @ExtendWith(SpringExtension::class)
-class SecretConfigRepositoryTests : AbstractChannelTests() {
+class ChannelDefinitionRepositoryTests : AbstractChannelTests() {
+
     companion object {
         @JvmStatic
         private val log = LoggerFactory.getLogger(this::class.java)
     }
 
     @Autowired
-    lateinit var secretConfigRepository: SecretConfigRepository
+    private lateinit var channelDefinitionRepository: ChannelDefinitionRepository
 
-    @DisplayName("test save secret config")
+    @DisplayName("test save definition")
     @Test
-    fun testSaveSecretConfig() {
-        val config: SecretConfig = getConfig(ChannelType.WECHAT, DEFAULT_CHANNEL_NO)
+    fun testSaveDefinitionConfig() {
+        var definition = ChannelDefinition(
+                channelNo = "WECHAT_DEFAULT",
+                channelType = ChannelType.WECHAT,
+                name = "微信",
+                description = "微信默认渠道")
 
-        secretConfigRepository.save(config)
-        log.info("save secret config: $config")
+        definition = channelDefinitionRepository.save(definition)
 
-        val query = secretConfigRepository.findById(config.channelNo ?: DEFAULT_CHANNEL_NO)
-        assertThat(query.get()).isEqualTo(config)
+        log.info("save definition config: $definition")
+
+        val query = channelDefinitionRepository.findByChannelNo(definition.channelNo!!).get()
+
+        assertThat(query).isEqualTo(definition)
+
+
     }
 }

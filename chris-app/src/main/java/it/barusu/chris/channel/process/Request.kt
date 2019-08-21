@@ -1,6 +1,6 @@
 package it.barusu.chris.channel.process
 
-import it.barusu.chris.channel.config.SecretConfig
+import it.barusu.chris.channel.config.ChannelSecret
 import it.barusu.chris.common.Phase
 import it.barusu.chris.common.RequestType
 import it.barusu.chris.common.TransactionType
@@ -11,5 +11,5 @@ abstract class Request(val type: RequestType) {
     var content: String? = null
     lateinit var transactionType: TransactionType
     lateinit var phase: Phase
-    lateinit var config: SecretConfig
+    lateinit var secret: ChannelSecret
 }

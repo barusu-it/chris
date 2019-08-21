@@ -4,8 +4,8 @@ import it.barusu.chris.common.ChannelType
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
-@Document(collection = "cs_channel_secret_config")
-data class SecretConfig(
+@Document(collection = "cs_channel_secret")
+data class ChannelSecret(
         @Id
         var channelNo: String? = null,
         var channelType: ChannelType? = null,

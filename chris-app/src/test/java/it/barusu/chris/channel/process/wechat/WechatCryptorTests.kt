@@ -1,7 +1,7 @@
 package it.barusu.chris.channel.process.wechat
 
 import it.barusu.chris.channel.AbstractChannelTests
-import it.barusu.chris.channel.config.SecretConfig
+import it.barusu.chris.channel.config.ChannelSecret
 import it.barusu.chris.channel.process.bean.TransactionRequest
 import it.barusu.chris.common.ChannelType
 import org.assertj.core.api.Assertions.assertThat
@@ -18,14 +18,14 @@ class WechatCryptorTests : AbstractChannelTests() {
 
     @Suppress("SpellCheckingInspection")
     private val cryptor: WechatCryptor = WechatCryptor()
-    private val config: SecretConfig = getConfig(ChannelType.WECHAT, DEFAULT_CHANNEL_NO)
+    private val secret: ChannelSecret = getSecret(ChannelType.WECHAT, DEFAULT_CHANNEL_NO)
 
     @DisplayName("test sign")
     @Test
     fun testSign() {
         val content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><xml><appid>wx99bcf174724d0ae0</appid><mch_id>1251462001</mch_id><nonce_str>52dfdd18186a42cabb96f98882c4e69d</nonce_str><out_trade_no>c91592e61b2f4fe98bb9af530b2831e4</out_trade_no><product_id>c91592e61b2f4fe98bb9af530b2831e4</product_id><sign_type>MD5</sign_type><body>test transaction</body><detail>test transaction</detail><notify_url>http://127.0.0.1</notify_url><fee_type>CNY</fee_type><total_fee>100</total_fee><time_start>20190430153204</time_start><time_expire>20190430163204</time_expire><trade_type>NATIVE</trade_type><sign></sign></xml>"
         val request = TransactionRequest()
-        request.config = config
+        request.secret = secret
 
         val sign = cryptor.sign(content, request)
 
@@ -49,7 +49,7 @@ class WechatCryptorTests : AbstractChannelTests() {
                 "</xml>"
 
         val request = TransactionRequest()
-        request.config = config
+        request.secret = secret
         cryptor.verify(content, request)
     }
 }

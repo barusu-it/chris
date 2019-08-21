@@ -5,8 +5,8 @@
 <@macro.compress_single_line>
 <?xml version="1.0" encoding="UTF-8"?>
 <xml>
-    <appid>${request.config.appId}</appid>
-    <mch_id>${request.config.merchantNo}</mch_id>
+    <appid>${request.secret.appId}</appid>
+    <mch_id>${request.secret.merchantNo}</mch_id>
     <nonce_str>${IdUtils.uuidWithoutDash()}</nonce_str>
     <out_trade_no>${request.transaction.transactionNo}</out_trade_no>
     <sign></sign>

@@ -56,9 +56,9 @@ class WechatCryptor {
         elements.remove(XML_NODE_SIGN)
 
         val pairs = StringUtils.pair(elements)
-        val data = pairs + AMPERSAND + XML_NAME_KEY + EQUAL_SIGN + request.config.secretKey
-        val sign = Hex.encodeHexString(SecurityUtils.digest(request.config.signatureAlgorithm!!,
-                data.toByteArray(Charset.forName(request.config.encoding))))
+        val data = pairs + AMPERSAND + XML_NAME_KEY + EQUAL_SIGN + request.secret.secretKey
+        val sign = Hex.encodeHexString(SecurityUtils.digest(request.secret.signatureAlgorithm!!,
+                data.toByteArray(Charset.forName(request.secret.encoding))))
                 .toUpperCase()
         return SIGNATURE_REPLACEMENT.matcher(content).replaceFirst(sign)
     }
@@ -73,9 +73,9 @@ class WechatCryptor {
 
         val originalSign = elements.remove(XML_NODE_SIGN)
         val pairs = StringUtils.pair(elements)
-        val data = pairs + AMPERSAND + XML_NAME_KEY + EQUAL_SIGN + request.config.secretKey
-        val sign = Hex.encodeHexString(SecurityUtils.digest(request.config.signatureAlgorithm!!,
-                data.toByteArray(Charset.forName(request.config.encoding))))
+        val data = pairs + AMPERSAND + XML_NAME_KEY + EQUAL_SIGN + request.secret.secretKey
+        val sign = Hex.encodeHexString(SecurityUtils.digest(request.secret.signatureAlgorithm!!,
+                data.toByteArray(Charset.forName(request.secret.encoding))))
                 .toUpperCase()
         if (!sign.equals(originalSign, true)) {
             log.error("The invalid signature: '$originalSign' was found in response '$data'")

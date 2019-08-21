@@ -6,15 +6,15 @@
 <@macro.compress_single_line>
 <?xml version="1.0" encoding="UTF-8"?>
 <xml>
-    <appid>${request.config.appId}</appid>
-    <mch_id>${request.config.merchantNo}</mch_id>
+    <appid>${request.secret.appId}</appid>
+    <mch_id>${request.secret.merchantNo}</mch_id>
     <nonce_str>${IdUtils.uuidWithoutDash()}</nonce_str>
     <out_trade_no>${request.transaction.transactionNo}</out_trade_no>
     <product_id>${request.transaction.transactionNo}</product_id>
-    <sign_type>${request.config.signatureAlgorithm}</sign_type>
+    <sign_type>${request.secret.signatureAlgorithm}</sign_type>
     <body>${request.transaction.description}</body>
     <detail>${request.transaction.description}</detail>
-    <notify_url>${request.config.callbackUrl}</notify_url>
+    <notify_url>${request.secret.callbackUrl}</notify_url>
     <fee_type>CNY</fee_type>
     <total_fee>${request.transaction.amount * 100}</total_fee>
     <time_start>${request.createdTime.format(DateUtils.of("yyyyMMddHHmmss"))}</time_start>

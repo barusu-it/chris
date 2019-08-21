@@ -3,7 +3,7 @@
 build/
 out/
 *.iml
-**/channel-config/**/*.json
+**/channel-secret/**/*.json
 
 # Compiled class file
 *.class

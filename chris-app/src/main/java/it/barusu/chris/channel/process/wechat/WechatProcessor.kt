@@ -53,7 +53,7 @@ class WechatProcessor(httpClient: HttpClient,
         request.content = signedRequestString
         val requestBase = compose(request, signedRequestString)
         val responseEntity = doExecute(requestBase)
-        val responseString = EntityUtils.toString(responseEntity, request.config.encoding)
+        val responseString = EntityUtils.toString(responseEntity, request.secret.encoding)
         log.info("response string: $responseString")
 
         cryptor.verify(responseString, request)
@@ -71,21 +71,21 @@ class WechatProcessor(httpClient: HttpClient,
             else -> throw IllegalArgumentException("Request type [${request.type}] not supported by Wechat")
         }
 
-        val post = HttpPost(request.config.baseUrl + contextUrl)
+        val post = HttpPost(request.secret.baseUrl + contextUrl)
         post.setHeader(HEADER_XML)
-        post.entity = StringEntity(content, request.config.encoding)
+        post.entity = StringEntity(content, request.secret.encoding)
         return post
     }
 
     private fun getHttpClient(request: Request): HttpClient {
-        val keyName = request.config.channelType!!.name + DASH + request.config.channelNo
+        val keyName = request.secret.channelType!!.name + DASH + request.secret.channelNo
         return httpClients.getOrDefault(keyName, buildHttpClient(request))
 
     }
 
     private fun buildHttpClient(request: Request): HttpClient {
-        val keyStore = SecurityUtils.getKeyStore(request.config.privateKeyType!!, request.config.privateKey!!,
-                request.config.privateKeyPassword!!, SecurityUtils.DEFAULT_PROVIDER)
+        val keyStore = SecurityUtils.getKeyStore(request.secret.privateKeyType!!, request.secret.privateKey!!,
+                request.secret.privateKeyPassword!!, SecurityUtils.DEFAULT_PROVIDER)
 
         return HttpClients
                 .custom()
@@ -98,7 +98,7 @@ class WechatProcessor(httpClient: HttpClient,
                 .setSSLContext(SSLContextBuilder
                         .create()
                         .setProtocol("TLSv1")
-                        .loadKeyMaterial(keyStore, request.config.privateKeyPassword!!.toCharArray())
+                        .loadKeyMaterial(keyStore, request.secret.privateKeyPassword!!.toCharArray())
                         .build())
                 .setSSLHostnameVerifier(SSLConnectionSocketFactory.getDefaultHostnameVerifier())
                 .build()

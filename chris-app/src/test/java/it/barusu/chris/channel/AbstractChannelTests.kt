@@ -1,6 +1,6 @@
 package it.barusu.chris.channel
 
-import it.barusu.chris.channel.config.SecretConfig
+import it.barusu.chris.channel.config.ChannelSecret
 import it.barusu.chris.common.ChannelType
 import it.barusu.chris.util.StringUtils
 import it.barusu.chris.util.StringUtils.Companion.DASH
@@ -21,7 +21,7 @@ abstract class AbstractChannelTests {
 
         const val DEFAULT_CHANNEL_NO: String = "DEFAULT"
         private const val DEFAULT_ENVIRONMENT: String = "dev"
-        private const val BASE_DIRECTION: String = "channel-config"
+        private const val BASE_DIRECTION: String = "channel-secret"
         private const val SUFFIX = ".json"
 
         @JvmStatic
@@ -31,11 +31,11 @@ abstract class AbstractChannelTests {
         private val ENVIRONMENT = System.getProperty("env", DEFAULT_ENVIRONMENT)
     }
 
-    protected fun getConfig(type: ChannelType, channelNo: String): SecretConfig {
+    protected fun getSecret(type: ChannelType, channelNo: String): ChannelSecret {
         val fileName = BASE_DIRECTION + SEPARATOR + ENVIRONMENT + SEPARATOR + type.name + DASH + channelNo + SUFFIX
         val content = IOUtils.toString(Thread.currentThread().contextClassLoader.getResourceAsStream(fileName),
                 Charset.forName(StringUtils.UTF_8))
-        return JsonProviderHolder.JACKSON.parse(content, SecretConfig::class.java)
+        return JsonProviderHolder.JACKSON.parse(content, ChannelSecret::class.java)
     }
 
     protected fun httpClient(): HttpClient {

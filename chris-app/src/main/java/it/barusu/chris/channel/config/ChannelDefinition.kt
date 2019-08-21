@@ -10,8 +10,8 @@ import javax.persistence.*
 
 @Entity
 @EntityListeners(AuditingEntityListener::class)
-@Table(name = "cs_channel_definition_config", uniqueConstraints = [UniqueConstraint(columnNames = ["channel_no"])])
-data class DefinitionConfig(
+@Table(name = "cs_channel_definition", uniqueConstraints = [UniqueConstraint(columnNames = ["channel_no"])])
+data class ChannelDefinition(
         @Id
         @GeneratedValue
         var id: Long? = null,

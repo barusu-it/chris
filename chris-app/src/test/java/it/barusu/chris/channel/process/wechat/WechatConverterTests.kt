@@ -1,7 +1,7 @@
 package it.barusu.chris.channel.process.wechat
 
 import it.barusu.chris.channel.AbstractChannelTests
-import it.barusu.chris.channel.config.SecretConfig
+import it.barusu.chris.channel.config.ChannelSecret
 import it.barusu.chris.channel.process.bean.Transaction
 import it.barusu.chris.channel.process.bean.TransactionQueryRequest
 import it.barusu.chris.channel.process.bean.TransactionRequest
@@ -23,13 +23,13 @@ class WechatConverterTests : AbstractChannelTests() {
     }
 
     private val converter: WechatConverter = WechatConverter()
-    private val config: SecretConfig = getConfig(ChannelType.WECHAT, DEFAULT_CHANNEL_NO)
+    private val secret: ChannelSecret = getSecret(ChannelType.WECHAT, DEFAULT_CHANNEL_NO)
 
     @DisplayName("test from transaction")
     @Test
     fun testFromTransaction() {
         val request = TransactionRequest(IdUtils.uuid())
-        request.config = config
+        request.secret = secret
         request.transactionType = TransactionType.WITHHOLD
         request.transaction = Transaction(
                 transactionNo = IdUtils.uuidWithoutDash(),
@@ -64,7 +64,7 @@ class WechatConverterTests : AbstractChannelTests() {
                 "</xml>"
 
         val request = TransactionRequest(IdUtils.uuidWithoutDash())
-        request.config = config
+        request.secret = secret
 
         val response = converter.toTransactionResponse(content, request)
         log.info("to transaction response: $response")
@@ -79,7 +79,7 @@ class WechatConverterTests : AbstractChannelTests() {
     @Test
     fun testFromTransactionQuery() {
         val request = TransactionQueryRequest(orderNo = IdUtils.uuid())
-        request.config = config
+        request.secret = secret
         request.transaction = Transaction(
                 transactionNo = "a14f9fc9cfb34451b930b1530eb8ed1c",
                 transactionType = TransactionType.WITHHOLD)
@@ -111,7 +111,7 @@ class WechatConverterTests : AbstractChannelTests() {
                 "</xml>"
 
         val request = TransactionQueryRequest()
-        request.config = config
+        request.secret = secret
 
         val response = converter.toTransactionQueryResponse(content, request)
         log.info("to transaction query response: $response")
