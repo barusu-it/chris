@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 
 class JacksonProvider : JsonProvider {
 
@@ -15,7 +16,8 @@ class JacksonProvider : JsonProvider {
         val DEFAULT_OBJECT_MAPPER: ObjectMapper = initObjectMapper()
 
         private fun initObjectMapper(): ObjectMapper {
-            val objectMapper = ObjectMapper()
+            // use jacksonObjectMapper to register kotlin support automatically.
+            val objectMapper = jacksonObjectMapper()
             objectMapper.registerModule(Jdk8Module())
             objectMapper.registerModule(JavaTimeModule())
 //            objectMapper.registerModule(GuavaModule())
@@ -34,6 +36,10 @@ class JacksonProvider : JsonProvider {
 
     override fun <T> parse(text: String, targetType: Class<T>): T {
         return DEFAULT_OBJECT_MAPPER.readValue(text, targetType)
+    }
+
+    override fun convert(any: Any): String {
+        return DEFAULT_OBJECT_MAPPER.writeValueAsString(any)
     }
 
 }

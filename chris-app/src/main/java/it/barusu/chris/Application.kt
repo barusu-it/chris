@@ -1,7 +1,6 @@
 package it.barusu.chris
 
 import io.vertx.core.Vertx
-import it.barusu.chris.sample.web.StaticServer
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.event.ApplicationReadyEvent
@@ -12,11 +11,11 @@ import javax.annotation.Resource
 class Application {
 
     @Resource
-    lateinit var staticServer: StaticServer
+    lateinit var httpServer: HttpServer
 
     @EventListener
     fun deployVerticle(event: ApplicationReadyEvent) {
-        Vertx.vertx().deployVerticle(staticServer)
+        Vertx.vertx().deployVerticle(httpServer)
     }
 }
 
