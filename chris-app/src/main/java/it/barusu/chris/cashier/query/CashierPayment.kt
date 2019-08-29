@@ -17,6 +17,7 @@ import javax.persistence.*
 @Table(name = "cs_cashier_payment",
         uniqueConstraints = [UniqueConstraint(columnNames = ["merchant_id", "cashier_type", "channel_type"])],
         indexes = [Index(columnList = "status"), Index(columnList = "name")])
+// 此处需要添加DataObject注解，由于vertx-service-proxy生成代码时默认只对原生类型和JsonObject做转换，其他类型需要添加该注解
 @DataObject(generateConverter = true)
 data class CashierPayment(
 
@@ -66,6 +67,7 @@ data class CashierPayment(
         @Column(name = "status", length = 64, nullable = false)
         var status: DefinitionStatus = DefinitionStatus.ACTIVED
 ) {
+    // @DataObject生成代码时需要JsonObject参数的构造器和toJson方法
     constructor(jsonObject: JsonObject) : this() {
         CashierPaymentConverter.fromJson(jsonObject, this)
     }

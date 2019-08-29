@@ -132,6 +132,7 @@ subprojects {
 }
 
 /**
+ * 这里不需要添加额外的task，可以使用annotationProcessor 或 kapt 即可
  * reference:
  * https://stackoverflow.com/questions/44781041/vert-x-service-proxies-from-kotlin-with-vertx-codegen
  *
