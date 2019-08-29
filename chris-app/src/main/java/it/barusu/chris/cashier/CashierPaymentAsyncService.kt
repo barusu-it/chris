@@ -14,6 +14,7 @@ interface CashierPaymentAsyncService {
 
     fun findById(id: Long, handler: Handler<AsyncResult<CashierPayment>>)
 
+    // vertx codegen lang kotlin does not support generate companion object
 //    companion object {
 //        @GenIgnore
 //        @JvmStatic
