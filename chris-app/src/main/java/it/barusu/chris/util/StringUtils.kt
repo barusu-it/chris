@@ -11,6 +11,7 @@ class StringUtils {
         const val AMPERSAND: String = "&"
         const val EMPTY: String = ""
         const val DASH: String = "-"
+        const val COLON: String = ":"
         const val DATE: String = "yyyyMMdd"
         const val DATETIME: String = "yyyyMMddHHmmss"
 

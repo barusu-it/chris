@@ -4,11 +4,11 @@ buildscript {
     ext.embedMongoVersion = '2.2.0'
     ext.embedRedisVersion = '0.7.2'
     ext.h2Version = '1.4.199'
-    ext.kotlinVersion = '1.3.41'
+    ext.kotlinVersion = '1.3.50'
     ext.mapstructVersion = '1.3.0.Final'
-    ext.springBootVersion = '2.1.6.RELEASE'
+    ext.springBootVersion = '2.1.7.RELEASE'
     ext.springCloudVersion = 'Greenwich.RELEASE'
-    ext.vertxVersion = '3.8.0'
+    ext.vertxVersion = '3.8.1'
     ext.xstreamVersion = '1.4.10'
 
     // this will overwrite spring boot gradle plugin pom properties definition
@@ -130,6 +130,33 @@ subprojects {
     }
 
 }
+
+/**
+ * reference:
+ * https://stackoverflow.com/questions/44781041/vert-x-service-proxies-from-kotlin-with-vertx-codegen
+ *
+ */
+
+//configure(subprojects.findAll() { it.name == 'chris-app' }) {
+//    task generateProxies(type: JavaCompile, group: 'build') {
+//        source = sourceSets.main.java
+//        classpath = configurations.compile + configurations.compileOnly
+//        destinationDir = file("build/generated")
+//        options.compilerArgs = [
+//                "-proc:only",
+//                "-processor", "io.vertx.codegen.CodeGenProcessor",
+//                "-AoutputDirectory=${projectDir}/src/main"
+//        ]
+//    }
+//
+//    compileJava {
+//        dependsOn(generateProxies)
+//        source += "build/generated"
+//        options.compilerArgs = [
+//                "-Acodetrans.output=${projectDir}/src/main"
+//        ]
+//    }
+//}
 
 task testReport(type: TestReport) {
     destinationDir = file("$buildDir/reports/allTests")

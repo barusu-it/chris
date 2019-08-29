@@ -1,6 +1,8 @@
 package it.barusu.chris.cashier.query
 
 import com.fasterxml.jackson.annotation.JsonFormat
+import io.vertx.codegen.annotations.DataObject
+import io.vertx.core.json.JsonObject
 import it.barusu.chris.common.CashierType
 import it.barusu.chris.common.ChannelType
 import it.barusu.chris.common.DefinitionStatus
@@ -15,6 +17,7 @@ import javax.persistence.*
 @Table(name = "cs_cashier_payment",
         uniqueConstraints = [UniqueConstraint(columnNames = ["merchant_id", "cashier_type", "channel_type"])],
         indexes = [Index(columnList = "status"), Index(columnList = "name")])
+@DataObject(generateConverter = true)
 data class CashierPayment(
 
         @Id
@@ -62,4 +65,14 @@ data class CashierPayment(
         @Enumerated(EnumType.STRING)
         @Column(name = "status", length = 64, nullable = false)
         var status: DefinitionStatus = DefinitionStatus.ACTIVED
-)
+) {
+    constructor(jsonObject: JsonObject) : this() {
+        CashierPaymentConverter.fromJson(jsonObject, this)
+    }
+
+    fun toJson(): JsonObject {
+        val json = JsonObject()
+        CashierPaymentConverter.toJson(this, json)
+        return json
+    }
+}

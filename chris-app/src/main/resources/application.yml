@@ -14,3 +14,10 @@ spring:
     url: jdbc:h2:mem:testdb
     username: sa
     password: password
+  mvc:
+    static-path-pattern: /static/**
+server:
+  servlet:
+    context-path: /m
+
+

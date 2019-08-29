@@ -2,8 +2,8 @@ apply plugin: 'org.springframework.boot'
 
 dependencies {
 
-//    compile 'org.springframework.boot:spring-boot-starter-web'
-//    compile 'org.springframework.boot:spring-boot-starter-undertow'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-undertow'
 
     compile 'org.springframework.boot:spring-boot-starter'
     compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
@@ -12,6 +12,13 @@ dependencies {
 
     compile 'io.vertx:vertx-web'
     compile 'io.vertx:vertx-lang-kotlin'
+    compile 'io.vertx:vertx-lang-groovy'
+    compile 'io.vertx:vertx-service-proxy'
+    compile 'io.vertx:vertx-codegen'
+    compileOnly 'io.vertx:vertx-codegen'
+    kapt "io.vertx:vertx-codegen:${vertxVersion}:processor"
+    kapt "io.vertx:vertx-service-proxy:${vertxVersion}:processor"
+
 
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8'
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'

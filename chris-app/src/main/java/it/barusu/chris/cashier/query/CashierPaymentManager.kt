@@ -4,6 +4,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.data.domain.Example
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
+import java.util.*
 
 @Component
 class CashierPaymentManager(val repository: CashierPaymentRepository) {
@@ -27,7 +28,7 @@ class CashierPaymentManager(val repository: CashierPaymentRepository) {
         return repository.findAll(Example.of(params))
     }
 
-    fun fundById(id: Long): CashierPayment {
-        return repository.getOne(id)
+    fun fundById(id: Long): Optional<CashierPayment> {
+        return repository.findById(id)
     }
 }
